@@ -140,18 +140,13 @@ bool apply_drcs_conversion_table( arib_instance_t *p_instance )
             }
             p_drcs_conv = p_drcs_conv->p_next;
         }
-#ifdef DEBUG_ARIBSUB
-        if( uc )
+
+        if( !uc )
         {
-            arib_log( p_instance, "Mapping [%s=U+%04x] will be used.",
-                      p_instance->p->drcs_hash_table[i], uc );
-        }
-        else
-        {
-            arib_log( p_instance, "Mapping for hash[%s] is not found.",
+            arib_log( p_instance, "[DRCS] Mapping for hash[%s] is not found.",
                       p_instance->p->drcs_hash_table[i] );
         }
-#endif
+
         p_instance->p->drcs_conv_table[i] = uc;
     }
     return true;
