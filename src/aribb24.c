@@ -37,7 +37,6 @@
 
 void arib_log( arib_instance_t *p_instance, const char *psz_format, ... )
 {
-#ifdef HAVE_VASPRINTF
     va_list args;
     free( p_instance->p->psz_last_error );
     va_start( args, psz_format );
@@ -57,7 +56,6 @@ void arib_log( arib_instance_t *p_instance, const char *psz_format, ... )
         // vprintf ?
     }
     va_end( args );
-#endif
 }
 
 arib_instance_t * arib_instance_new( void *p_opaque )
